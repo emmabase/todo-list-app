@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import TodoListScreen from "./screens/TodoListScreen";
+import { ToastContainer } from "react-toastify";
+import EditTodoScreen from "./screens/EditTodoScreen";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        <ToastContainer position="bottom-center" limit={1} />
+        <Routes>
+          <Route path="/" element={<TodoListScreen />} />
+          <Route path="/single/todo/:id" element={<EditTodoScreen />}></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
